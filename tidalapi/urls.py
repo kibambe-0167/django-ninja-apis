@@ -16,66 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ninja import NinjaAPI, Schema
-from tidalendpoints.models import CustomerRegister, UserAdminData
+# 
+# models logics
+from tidalapi.logic import LoginModal
 
+# class
 api = NinjaAPI()
-
-def getData():
-    lyst = []
-    data = CustomerRegister.objects.all()
-    d = CustomerRegister.objects.get(email="hbk@gmail.com")
-    print( d )
-    for i in data:
-        lyst.append( {
-            'customerId': i.customer_id, 
-            "customerName": i.customer_name,
-            'email': i.email, 
-            'phone': i.phone, 
-            'billingAddr': i.billing_address, 
-            'contactPerson': i.contact_person, 
-            'customerStatus': i.customer_status 
-        } )
-    return lyst
-
-# def getAdminEmail(email):
-#     lyst = []
-#     data = CustomerRegister.objects.get(email=email)
-#     return data
-    # print( data )
-    # for i in data:
-    #     lyst.append( {
-    #         'customerId': i.customer_id, 
-    #         "customerName": i.customer_name,
-    #         'email': i.email, 
-    #         'phone': i.phone, 
-    #         'billingAddr': i.billing_address, 
-    #         'contactPerson': i.contact_person, 
-    #         'customerStatus': i.customer_status 
-    #     } )
-    # return lyst
-
-# def getAdmin(password, email):
-#     cus_res = getAdminEmail( email )
-    # lyst = []
-    # data = UserAdminData.objects.get(email="hbk@gmail.com")
-    # for i in data:
-    #     lyst.append( {
-    #         'customerId': i.customer_id, 
-    #         "customerName": i.customer_name,
-    #         'email': i.email, 
-    #         'phone': i.phone, 
-    #         'billingAddr': i.billing_address, 
-    #         'contactPerson': i.contact_person, 
-    #         'customerStatus': i.customer_status 
-    #     } )
-    # return lyst
 
 
 
 @api.get("/")
 def home( request ):
-    d = getData()
-    return {"Home": d }
+    
+    return {"Home": "default end point" }
 
 
 # login schema, parent is ninja.Schema
@@ -85,8 +38,10 @@ class loginSchema( Schema ):
 # login user, receive data
 @api.post("/login" )
 def login( request, data: loginSchema ):
-    print( data.dict() )
-    return {"loginendpoint": "Ola" }
+    d = data.dict() ; print( d )
+    loginObj = LoginModal(d['email'], d['password'])
+    res = loginObj.login()
+    return {"loginendpoint": res }
 
 
 

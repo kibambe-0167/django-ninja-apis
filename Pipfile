@@ -6,6 +6,10 @@ name = "pypi"
 [packages]
 django-ninja = "*"
 django = "*"
+pyngrok = "*"
+django-cors-headers = "*"
+mysql-connector-python = "*"
+pymysql = "*"
 
 [dev-packages]
 
