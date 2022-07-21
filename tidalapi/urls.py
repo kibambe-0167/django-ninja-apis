@@ -18,7 +18,7 @@ from django.urls import path
 from ninja import NinjaAPI, Schema
 # 
 # models logics
-from tidalapi.logic import LoginModal
+from tidalapi.logic import LoginModal, DeviceModal
 
 # class
 api = NinjaAPI()
@@ -44,7 +44,20 @@ def login( request, data: loginSchema ):
     return {"loginendpoint": res }
 
 
+class DeviceSchema( Schema ):
+    id: int
+# get devices
+@api.post("/devices")
+def devices( request, data: DeviceSchema ):
+    d = data.dict()
+    print( d )
+    obj = DeviceModal(d['id'])
+    data = obj.get_device()
+    print( data )
+    return {"Devices": data }
 
+
+# base urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', api.urls),

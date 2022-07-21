@@ -1,4 +1,4 @@
-from tidalendpoints.models import CustomerRegister, UserAdminData
+from tidalendpoints.models import CustomerRegister, UserAdminData, DeviceManufacturingInfo
 
 
 # when login, first get user email from customer register
@@ -33,3 +33,35 @@ class LoginModal:
       print( e )
       return e
   
+  
+  
+# read data from devices
+class DeviceModal:
+  def __init__(self, id ):
+    self.device_id = id
+    
+  def get_device(self):
+    try:
+      data = DeviceManufacturingInfo.objects.filter(device_id=self.device_id).values()
+      if len( list( data ) ) > 0:
+        data_ = list()
+        return list( data )
+        # for i in data:
+        #   d = self.format_( i )
+        #   data_.append( d )
+        # return data_
+      else:
+        return "Devices not found"
+    except Exception as e:
+      print( e )
+      return e
+    
+  def format_( self, data ):
+    d = {
+      "device_id": data.device_id,
+      "device_status": data.device_status,
+      "device_version": data.device_version,
+      "device_manufacture_date": data.device_manufacture_date
+    }
+    
+    return d

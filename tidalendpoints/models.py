@@ -23,3 +23,12 @@ class UserAdminData( models.Model):
   roles = models.DecimalField(max_digits=1, decimal_places=0)
   last_seen = models.DateTimeField( auto_now_add=True )
   user_IP = models.CharField(max_length=15)
+  
+  
+# device schema
+class DeviceManufacturingInfo(models.Model ):
+  device_id = models.IntegerField(primary_key=True)
+  device_status = models.IntegerField()
+  device_version = models.DecimalField(max_digits=20, decimal_places=2)
+  device_manufacture_date = models.DateTimeField(auto_created=True)
+   
