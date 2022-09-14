@@ -1,9 +1,17 @@
 # tidalapis
 demo api end points for tidal. using django-ninja and mysql for database
 
+# using virutalenv for virutal env.
 
 
-run django app, we using pipenv instead if virtual env
+## install virtual env
+python -m pip install virtualenv
 
+## create virtualenv
+python -m venv env
 
-pipenv run python manage.py runserver
+## active virtualenv
+env\Script\active
+
+## install packages in env requirement.txt
+python -m pip3 install -r requirements.txt
