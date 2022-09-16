@@ -27,7 +27,6 @@ api = NinjaAPI()
 
 @api.get("/")
 def home( request ):
-    
     return {"Home": "default end point" }
 
 
@@ -88,3 +87,7 @@ urlpatterns = [
 
 
 
+
+
+
+# https://tidaal.herokuapp.com/ | https://git.heroku.com/tidaal.git
