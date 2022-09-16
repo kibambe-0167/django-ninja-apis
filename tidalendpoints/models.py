@@ -1,9 +1,9 @@
 from django.db import models
 
 
-# Create your models here.
-# 
-# users
+## Create your models here.
+
+## users
 class CustomerRegister( models.Model ):
   customer_id = models.DecimalField( max_digits=10, primary_key=True, decimal_places=0 )
   customer_name = models.CharField( max_length= 100 )
@@ -12,8 +12,8 @@ class CustomerRegister( models.Model ):
   billing_address = models.CharField( max_length=200)
   contact_person = models.CharField(max_length=50)
   customer_status = models.DecimalField( max_digits=1, decimal_places=0)
-# 
-# user admin
+
+## user admin
 class UserAdminData( models.Model):
   user_id = models.CharField(max_length=50, primary_key=True )
   customer_id = models.DecimalField(max_digits=10, decimal_places=0 )
@@ -25,7 +25,7 @@ class UserAdminData( models.Model):
   user_IP = models.CharField(max_length=15)
   
   
-# device schema
+## device schema
 class DeviceManufacturingInfo(models.Model ):
   device_id = models.IntegerField(primary_key=True)
   device_status = models.IntegerField()

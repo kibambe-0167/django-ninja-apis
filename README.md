@@ -13,5 +13,8 @@ python -m venv env
 ## active virtualenv
 env\Script\active
 
+## install packages
+python -m pip3 install <package_name_here>
+
 ## install packages in env requirement.txt
 python -m pip3 install -r requirements.txt

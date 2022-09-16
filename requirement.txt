@@ -1,3 +1,5 @@
 django-ninja
 Django
 mysqlclient
+django-cors-headers
+psycopg2

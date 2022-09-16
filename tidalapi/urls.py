@@ -42,6 +42,7 @@ def login( request, data: loginSchema ):
     loginObj = LoginModal(d['email'], d['password'])
     res = loginObj.login()
     return {"loginendpoint": res }
+    return {"loginendpoint": "result here" }
 
 
 class DeviceSchema( Schema ):
@@ -55,6 +56,7 @@ def devices( request, data: DeviceSchema ):
     data = obj.get_device()
     print( data )
     return {"Devices": data }
+    return {"Devices": "data result" }
 
 
 # base urls
@@ -83,3 +85,6 @@ urlpatterns = [
 # user_status = 1
 # roles = 1
 # user ip = 1
+
+
+

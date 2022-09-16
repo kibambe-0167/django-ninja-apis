@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import psycopg2
 # import pymysql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +28,12 @@ SECRET_KEY = 'django-insecure-v80k7$v(yjthx4jxxrlf*nx@c-*36-t-6o58fe9@=2uiwweltw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '*',
+    "tiny.db.elephantsql.com",
+    "197.184.183.157",
+    "16.162.208.170"
+    ]
 
 
 # Application definition
@@ -112,29 +118,19 @@ WSGI_APPLICATION = 'tidalapi.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-    # 'PORT': '3306',
-    # 
     'default': {  
-        'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'InSee',  
-        'USER': 'user_developer',  
-        'PASSWORD': 'Devuser-1',  
-        'HOST': 'aurora-cluster-insee.cluster-ccr8pmvsw9uk.us-west-2.rds.amazonaws.com',  
-        'OPTIONS': {  
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
-        }  
+        'ENGINE': 'django.db.backends.postgresql',  
+        'NAME': 'avnqtgnm',  
+        'USER': 'avnqtgnm',
+        'PASSWORD': '5tdz_GOKm9dsnWnD1Ec4bScNXWB-U8so',  
+        'HOST': 'tiny.db.elephantsql.com',  
     }
     
 }
 
-# Host: aurora-cluster-insee.cluster-ccr8pmvsw9uk.us-west-2.rds.amazonaws.com
-# Database: InSee
-# Username: user_developer
-# Password: Devuser-1
+# 'OPTIONS': {  
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+#         }  
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
