@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v80k7$v(yjthx4jxxrlf*nx@c-*36-t-6o58fe9@=2uiwweltw'
+# removed key from here..
+SECRET_KEY = '*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -113,9 +114,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tidalapi.wsgi.application'
 
-
 # Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
     'default': {  
